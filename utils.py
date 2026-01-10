@@ -30,7 +30,6 @@ def get_team_match_logs(team_code, team_name, season="2024-2025"):
     try:
         response = requests.get(url, headers=custom_headers)
         response.raise_for_status() 
-        print("Request successful, parsing HTML...")
         soup = BeautifulSoup(response.content, 'html.parser')
         table = soup.find('table', attrs=table_attrs)
     
@@ -53,7 +52,6 @@ def get_team_match_logs(team_code, team_name, season="2024-2025"):
                     rows.append(row_data)
 
             df = pd.DataFrame(rows)
-            print("Table with links extracted:")
             return df
         else:
             print("Table not found in the HTML content.")
@@ -83,7 +81,6 @@ def stat_player_match(url):
                 df = table_transformation(df)
                 dfs.append(df)
                 print(f"✅ DataFrame pour team number {i+1} extrait et nettoyé.")
-                print(df.head())
                 print("---")
             except Exception as e:
                 print(f"Erreur lors de l'extraction ou du nettoyage du tableau {i+1} : {e}")

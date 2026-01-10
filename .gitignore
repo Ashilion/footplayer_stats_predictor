@@ -6,3 +6,8 @@ __pycache__/
 footenv/
 venv/
 env/
+
+.env
+
+data/
+football_model/
