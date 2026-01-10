@@ -1,0 +1,13 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+footenv/
+venv/
+env/
+
+.env
+
+data/
+football_model/
