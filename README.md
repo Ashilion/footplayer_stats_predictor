@@ -2,7 +2,8 @@
 **Moving beyond team history to model the impact of the starting XI.**
 
 
-### 🔗 [Launch Live Simulator](https://ashilion.github.io/footplayer_stats_predictor/)
+### 🔗 [Website link](https://ashilion.github.io/footplayer_stats_predictor/)
+(players can take 5s to load)
 
 ![Match Simulator Interface](./website_screenshot.png)
 
