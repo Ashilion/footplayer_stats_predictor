@@ -1,7 +1,9 @@
 pandas
 hopsworks
+pyarrow
 python-dotenv
 requests
 beautifulsoup4
+lxml
 nbconvert
 ipykernel
