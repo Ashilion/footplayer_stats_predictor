@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     hopsworks_project: str = "player_stat_prediction"
     
     # This tells Pydantic to look for a .env file
-    model_config = SettingsConfigDict(env_file=".env")
+    model_config = SettingsConfigDict(env_file=".env",env_ignore_empty=True)
 
 settings = Settings()
 
@@ -59,9 +59,10 @@ app = FastAPI(title="Football Prediction API", lifespan=lifespan)
 
 # Define the origins that are allowed to talk to your API
 origins = [
-    "http://localhost:5173",  # Your React/Vite dev server
+    "http://localhost:5173",  # Vite dev server
     "http://127.0.0.1:5173",
-    "http://localhost:3000",  # Common for Create-React-App
+    "http://localhost:3000",  # Create-React-App
+    "https://ashilion.github.io" # Deployed frontend
 ]
 
 app.add_middleware(

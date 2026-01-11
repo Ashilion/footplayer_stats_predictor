@@ -34,8 +34,7 @@ def clean_and_format_columns(df):
     # Standardize column names for Hopsworks Feature Store compatibility
     df.columns = (df.columns
                   .str.lower()
-                  .str.replace('%', '_perc', regex=False)
-                  .str.replace('.', '_', regex=False))
+                  .str.replace('%', '_perc', regex=False))
     return df
 
 def add_rolling_features(df, window_size=6):

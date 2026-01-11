@@ -1,0 +1,7 @@
+pandas
+hopsworks
+python-dotenv
+requests
+beautifulsoup4
+nbconvert
+ipykernel

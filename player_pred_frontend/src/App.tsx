@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+// @ts-nocheck
+import { useState, useEffect } from 'react';
 
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Tactical positions on the pitch
 const FORMATION_433 = {
@@ -45,6 +46,7 @@ const App = () => {
   const [prediction, setPrediction] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  
   // 1. Load Players from API
   useEffect(() => {
     fetch(`${API_BASE_URL}/players`)
@@ -101,7 +103,7 @@ const App = () => {
     
     // Convert "Manchester City" to "manchester-city"
     const fileName = teamName.toLowerCase().replace(/\s+/g, '-');
-    return `/logos/${fileName}.football-logos.cc.svg`;
+    return `logos/${fileName}.football-logos.cc.svg`;
   };
 
   const fillTeamWithDefaults = (teamKey, defaultNames) => {

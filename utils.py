@@ -25,7 +25,7 @@ table_attrs = {"class": "stats_table"}
 """------------------- Team Match Logs Extraction Function -----------------------------------"""
 
 def get_team_match_logs(team_code, team_name, season="2024-2025"):
-    url = f"https://fbref.com/en/squads/{team_code}/{season}/matchlogs/all_comps/schedule/{team_name}-Scores-and-Fixtures-All-Competitions"
+    url = f"https://fbref.com/en/squads/{team_code}/{season}/matchlogs/c9/schedule/{team_name}-Scores-and-Fixtures-Premier-League"
 
     try:
         response = requests.get(url, headers=custom_headers)
@@ -100,7 +100,7 @@ def get_all_season_match(season="2024-2025"):
         if df_team_matches is not None:
             for link in df_team_matches['match_link'].dropna().unique():
                 set_match.add(link)
-    return list(set_match)
+    return list(set_match)  
     
 
 """------------------- DataFrame Transformation Function --------------------------------"""
@@ -111,14 +111,14 @@ def table_transformation(df):
     # 1. Create new column names by merging the two levels
     new_columns = []
     for col in df_transformed.columns:
-        if 'Unnamed' in col[0]:
-            new_columns.append(col[1])
-        else:
-            new_columns.append(f"{col[0]}_{col[1]}")
-    
+        # if 'Unnamed' in col[0]:
+        #     new_columns.append(col[1])
+        # else:
+        #     new_columns.append(f"{col[0]}_{col[1]}")
+        new_columns.append(col[1])
     
     df_transformed.columns = new_columns    
-    df_transformed.columns = df_transformed.columns.str.replace(' ', '_').str.replace('%', 'Pct')
+    df_transformed.columns = df_transformed.columns.str.replace(' ', '_').str.replace('%', '_perc', regex=False)
     
     return df_transformed
 
